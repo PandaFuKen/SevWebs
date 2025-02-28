@@ -13,6 +13,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
     res.render('index', { titulo: 'Mi Página con Node.js y EJS' });
 });
+//Ruta para renderizar la pagina de login
+app.get('/login', (req, res) => {
+    res.render('login/index', { titulo: 'Página de Login' });
+});
 
 // Iniciar servidor
 const PORT = process.env.PORT || 3000;
