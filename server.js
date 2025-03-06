@@ -1,21 +1,21 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const pagesRouter = require('./src/routes/pages'); // Importa las rutas
 
 // Configurar EJS como motor de vistas
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'src', 'views')); // Cambiar ruta de views
+app.set('views', path.join(__dirname, 'src', 'views'));
 
 // Middleware para archivos estáticos (CSS, imágenes, etc.)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Ruta principal para renderizar index.ejs
-app.get('/', (req, res) => {
-    res.render('index', { titulo: 'Mi Página con Node.js y EJS' });
-});
-//Ruta para renderizar la pagina de login
-app.get('/login', (req, res) => {
-    res.render('login/index', { titulo: 'Página de Login' });
+// Usar el router para manejar las páginas
+app.use('/', pagesRouter);
+
+// Middleware para manejar errores 404
+app.use((req, res, next) => {
+    res.status(404).render('404', { titulo: 'Página no encontrada' });
 });
 
 // Iniciar servidor
