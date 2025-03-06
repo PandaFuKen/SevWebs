@@ -16,8 +16,8 @@ router.get('/hola', (req, res) => {
 });
 
 // Otras páginas que vayas agregando
-router.get('/registro', (req, res) => {
-    res.render('registro', { titulo: 'Registro de Usuario' });
+router.get('/register', (req, res) => {
+    res.render('register', { titulo: 'Registro' });
 });
 
 module.exports = router;
