@@ -1,0 +1,8 @@
+.imagen404{
+        display: block; /* Para evitar espacios adicionales */
+        margin: auto; /* Centra horizontalmente */
+        max-width: 100%; /* Evita que la imagen sea más grande que la pantalla */
+        height: auto; /* Mantiene la proporción */
+        width: 70%;
+    
+}

@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Página principal
 router.get('/', (req, res) => {
-    res.render('index', { titulo: 'Mi Página con Node.js y EJS' });
+    res.render('index',);
 });
 
 // Página de login
@@ -15,9 +15,14 @@ router.get('/hola', (req, res) => {
     res.render('hola', { titulo: 'Hello Word!' });
 });
 
-// Otras páginas que vayas agregando
+// Pagina de registro
 router.get('/register', (req, res) => {
     res.render('register', { titulo: 'Registro' });
+});
+
+//Direecion de usuarios
+router.get('/users', (req, res) => {
+    res.render('users',);
 });
 
 module.exports = router;
