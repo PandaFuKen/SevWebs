@@ -6,10 +6,6 @@ router.get('/', (req, res) => {
     res.render('index',);
 });
 
-// Página de login
-router.get('/login', (req, res) => {
-    res.render('login', { titulo: 'Iniciar Sesión' });
-});
 //Pagina hola
 router.get('/hola', (req, res) => {
     res.render('hola', { titulo: 'Hello Word!' });
