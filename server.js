@@ -1,25 +1,27 @@
-const express = require('express');
+import express from 'express';
+import dotenv from 'dotenv';
+import indexRoutes from './routes/index.js';
+
+dotenv.config();
 const app = express();
-const path = require('path');
-const pagesRouter = require('./src/routes/pages'); // Importa las rutas
 
-// Configurar EJS como motor de vistas
+// EJS como motor de plantillas
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'src', 'views'));
 
-// Middleware para archivos estáticos (CSS, imágenes, etc.)
-app.use(express.static(path.join(__dirname, 'public')));
+// Carpeta de archivos públicos
+app.use(express.static('public'));
 
-// Usar el router para manejar las páginas
-app.use('/', pagesRouter);
+// Rutas
+app.use('/', indexRoutes);
 
 // Middleware para manejar errores 404
 app.use((req, res, next) => {
-    res.status(404).render('404', { titulo: 'Página no encontrada' });
+  res.status(404).render('404', { title: 'Página no encontrada' });
 });
 
-// Iniciar servidor
+
+// Puerto
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor en http://localhost:${PORT}`);
 });
