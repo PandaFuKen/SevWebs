@@ -1,20 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/forms.css">
+    <title><%= titulo %></title>
 </head>
 <body>
-  <h1>Formulario de Registro</h1>
-  <form action="/register" method="POST">
-    <label for="username">Usuario:</label>
-    <input type="text" id="username" name="username" required>
-    <br>
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password" required>
-    <br>
-    <button type="submit">Registrar</button>
-  </form>
+    <title>Registro</title>
+</head>
+<body>
+    <div class="container">
+        <header>Registra tus datos</header>
+        <form action="/register" method="post">
+            <div class="form first">
+                <div class="details personal"><!--Detalles personales-->
+                    <span class="title">Datos Personales</span>
+                    <div class="fields">
+                        <div class="input-field"> 
+                            <label>Nombre(s) :</label> <!--Aqui añadimos nombre-->
+                            <input type="text" name="nombres" placeholder="Ingresa tu nombre" required>
+                        </div>
+                        <div class="input-field"> <!--Aqui añadimos apelldio paterno-->
+                            <label for="">Apellido Paterno :</label>
+                            <input type="text" name="apellidoPaterno" placeholder="Ingresa tu apellido paterno" required>
+                        </div>
+                        <div class="input-field"> <!--Aqui añadimos apellido materno-->
+                            <label>Apellido Materno :</label>
+                            <input type="text" name="apellidoMaterno" placeholder="Ingresa tu apellido materno" required>
+                        </div>
+                        <div class="input-field"> <!--Aqui añadimos fecha de nacimiento-->
+                            <label>Fecha de nacimiento :</label>
+                            <input type="date" name="fechaNacimiento" placeholder="Ingresa tu fecha de nacimiento" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Estado :</label>
+                            <select id="estado" name="estado" required>
+                                <option disabled selected>Selecciona el estado</option>
+                                <% estados.forEach(estado => { %>
+                                    <option value="<%= estado.codigo_estado %>"><%= estado.nombre_estado %></option>
+                                <% }); %>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Sexo</label>
+                            <select name="sexo" required>
+                                <option disabled selected>Selecciona El Sexo</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Numero de telefono</label>
+                            <input type="number" name="telefono" placeholder="Ingresa tu telefono" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Correo</label>
+                            <input type="email" name="correo" placeholder="Ingresa tu correo" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Contraseña :</label>
+                            <input type="password" name="contrasena" placeholder="Ingresa tu Contraseña" required>
+                        </div>
+                    </div>
+                </div>
+                    <button class="nextBtn">
+                        <span class="btnText">Next</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div> 
+            </div>
+        </form>
+    </div>
 </body>
 </html>
