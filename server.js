@@ -5,6 +5,9 @@ import indexRoutes from './routes/index.js';
 dotenv.config();
 const app = express();
 
+// Middleware para procesar datos del formulario
+app.use(express.urlencoded({ extended: true }));
+
 // EJS como motor de plantillas
 app.set('view engine', 'ejs');
 
@@ -18,7 +21,6 @@ app.use('/', indexRoutes);
 app.use((req, res, next) => {
   res.status(404).render('404', { title: 'Página no encontrada' });
 });
-
 
 // Puerto
 const PORT = process.env.PORT || 3000;

@@ -1,7 +1,8 @@
 import express from 'express';
 import { renderIndex } from '../controllers/indexcontroller.js';
 import { renderRegister } from '../controllers/registercontroller.js';
-import obtenerEstados = from ('../controllers/ObtenerEstados.js'); // Importar el controlador
+import { obtenerEstados } from '../controllers/ObtenerEstados.js';
+import { storeUser } from '../controllers/añadirusercontroller.js';
 
 const router = express.Router();
 
@@ -9,6 +10,9 @@ const router = express.Router();
 router.get('/', renderIndex);
 
 // Ruta para la página de registro
-router.get('/register', renderRegister, ObtenerEstados);
+router.get('/register', obtenerEstados, renderRegister);
+
+// Ruta para procesar el formulario de registro
+router.post('/register', storeUser);
 
 export default router;

@@ -1,21 +1,19 @@
-const express = require('express');
-const router = express.Router();
-const db = require('../config/db.js'); // Asegúrate de que la conexión a la base de datos esté configurada correctamente
+import express from 'express';
+import { pool } from '../config/db.js';
+export const obtenerEstados = async (req, res, next) => {
+  try {
+    // Realiza la consulta a la base de datos
+    const result = await pool.query('SELECT codigo_estado, nombre_estado FROM estados_mexicanos');
+    const estados = result.rows;
 
-router.get('/register', async (req, res) => {
-    try {
-        // Consulta para obtener los estados desde la base de datos
-        const { rows: estados } = await db.query(`
-            SELECT codigo_estado, nombre_estado
-            FROM estados_mexicanos
-        `);
-        
-        // Renderizar la vista de registro con los estados
-        res.render('register', { titulo: 'Registro', estados });
-    } catch (error) {
-        console.error('Error al obtener los estados:', error);
-        res.status(500).send('Error al cargar los estados');
-    }
-});
+    // Almacena los estados en `res.locals` para que estén disponibles en la vista
+    res.locals.estados = estados;
 
-module.exports = router;
+    // Llama al siguiente middleware o controlador
+    next();
+  } catch (error) {
+    console.error('Error al obtener los estados:', error);
+    res.status(500).send('Error al obtener los estados');
+  }
+};
+
