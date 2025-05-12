@@ -21,7 +21,7 @@ body{ /*aqui colocamos el background de la pagina*/
     border-radius: 6px;
     padding: 30px;
     margin: 0 15px;
-    background-color: #fff;
+    background-color: #ffffff;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 .container header{
@@ -39,7 +39,7 @@ body{ /*aqui colocamos el background de la pagina*/
     height: 3px;
     width: 100%;
     border-radius: 8px;
-    background-color: #4070f4;
+    background-color: #6a1d33;
 }
 .container form{
     position: relative;
@@ -126,7 +126,7 @@ form .fields .input-field{
     outline: none;
     color: #fff;
     border-radius: 5px;     
-    background-color: #4070f4;
+    background-color: #6a1d33;
     transition: all 0.3s linear;
     cursor: pointer;   
     margin: auto; 
@@ -136,7 +136,7 @@ form .fields .input-field{
     font-weight: 400;
 }
 form button:hover{
-    background-color: #265df2;
+    background-color: #c29584;
 }
 form button i,
 form .backBtn i{
@@ -167,4 +167,23 @@ form .buttons button , .backBtn{
     form .fields .input-field{
         width: 100%;
     }
+}
+
+.register-link {
+  margin-top: 0; /* Ajusta el margen superior */
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  display: block; /* Asegúrate de que sea un bloque visible */
+}
+
+.register-link a {
+  color: #6a1d33;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #efd8dd;
 }

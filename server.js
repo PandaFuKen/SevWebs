@@ -1,12 +1,22 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import bycrpt from 'bcrypt';
 import indexRoutes from './routes/index.js';
+import session from 'express-session';
 
 dotenv.config();
 const app = express();
 
 // Middleware para procesar datos del formulario
 app.use(express.urlencoded({ extended: true }));
+
+// Middleware para sesiones
+app.use(session({
+  secret: 'Panda020406', // Cambia esto por una clave secreta más segura
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false } // Cambia a `true` si usas HTTPS
+}));
 
 // EJS como motor de plantillas
 app.set('view engine', 'ejs');
