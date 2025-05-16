@@ -40,7 +40,7 @@ export const storeUser = async (req, res) => {
     await pool.query(query, values);
 
     // Redirige al usuario a una página de éxito o de inicio
-    res.redirect('/');
+    res.redirect('/login');
   } catch (error) {
     console.error('Error al registrar el usuario:', error);
     res.status(500).send('Error al registrar el usuario');

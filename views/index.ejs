@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Curp</title>
 </head>
 <body>
-    <h1>Bienvenido</h1>
+<%- include('navbar'); %>
+
+<section class="container_body">
+  <h1>CONSULTA TU CURP O RFC</h1>
+  <div class="tablinks-container">
+    <button class="tablink" onclick="openPage('Curp', this, 'red')">Curp</button>
+    <button class="tablink" onclick="openPage('Rfc', this, 'green')" id="defaultOpen">Rfc</button>
+  </div>
+
+  <div id="Curp" class="tabcontent">
+    <h3>Curp</h3>
+    <p>Curp is where the heart is..</p>
+    <%- include('curp')%>
+  </div>
+
+  <div id="Rfc" class="tabcontent">
+    <h3>Rfc</h3>
+    <p>Some Rfc this fine day!</p> 
+  </div>
+  <script src="js/CambioDeVentanas.js"></script>
+</section>
+
+
+
+
 </body>
 </html>

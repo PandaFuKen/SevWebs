@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="css/login.css" />
 </head>
 <body>
+    <% if (typeof error !== 'undefined') { %>
+      <div class="alert"><%= error %></div>
+    <% } %>
   <div class="container">
     <form class="/login" method="post">  
       <h2>Iniciar Sesión</h2>

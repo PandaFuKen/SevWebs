@@ -104,3 +104,29 @@ button:hover {
     .register-link a:hover {
       color: #c18589;
     }
+
+.alert {
+  position: fixed; /* Fija la posición en la pantalla */
+  top: 20px; /* Ajusta la distancia desde la parte superior */
+  left: 50%; /* Centra horizontalmente */
+  transform: translateX(-50%); /* Ajusta el centrado horizontal */
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Añade una sombra para destacar */
+  animation: fadeIn 0.5s ease-in-out, fadeOut 0.5s ease-in-out 3s; /* Aparece y desaparece */
+  z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+/* Animación para que desaparezca después de un tiempo */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

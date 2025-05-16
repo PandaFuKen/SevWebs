@@ -24,10 +24,21 @@ router.get('/login', loginuser);
 // Ruta para procesar el inicio de sesión
 router.post('/login', loginUser);
 
-// Ruta protegida para el panel del usuario
-router.get('/dashboard', isAuthenticated, (req, res) => {
-  res.render('dashboard', { user: req.session.user });
+//DashBorad Admin
+router.get('/adminDash', isAuthenticated, (req, res) => {
+  if (req.session.user.rol !== 1) {
+    return res.status(403).send('Acceso denegado'); // Verifica que sea Administrador
+  }
+  res.render('adminDash', { user: req.session.user });
 });
+//DashBoard user
+router.get('/userDash', isAuthenticated, (req, res) => {
+  if (req.session.user.rol !== 2) {
+    return res.status(403).send('Acceso denegado'); // Verifica que sea Usuario
+  }
+  res.render('userDash', { user: req.session.user });
+});
+
 
 // Ruta para cerrar sesión
 router.get('/logout', (req, res) => {

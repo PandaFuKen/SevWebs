@@ -1,0 +1,57 @@
+<section class="curp_section">
+  <div class="curp-container">
+  <h1>Calcula tu CURP</h1>
+  <form id="curpForm">
+    <input type="text" id="nombre" placeholder="Nombre" required>
+    <input type="text" id="apellidoP" placeholder="Apellido Paterno" required>
+    <input type="text" id="apellidoM" placeholder="Apellido Materno" required>
+    <input type="date" id="fechaNacimiento" required>
+    <select id="genero" required>
+      <option value="">Género</option>
+      <option value="H">Hombre</option>
+      <option value="M">Mujer</option>
+    </select>
+    <select id="estado" required>
+      <option value="">Estado de nacimiento</option>
+      <option value="AS">Aguascalientes</option>
+      <option value="BC">Baja California</option>
+      <option value="BS">Baja California Sur</option>
+      <option value="CC">Campeche</option>
+      <option value="CL">Coahuila</option>
+      <option value="CM">Colima</option>
+      <option value="CS">Chiapas</option>
+      <option value="CH">Chihuahua</option>
+      <option value="DF">Ciudad de México</option>
+      <option value="DG">Durango</option>
+      <option value="GT">Guanajuato</option>
+      <option value="GR">Guerrero</option>
+      <option value="HG">Hidalgo</option>
+      <option value="JC">Jalisco</option>
+      <option value="MC">Estado de México</option>
+      <option value="MN">Michoacán</option>
+      <option value="MS">Morelos</option>
+      <option value="NT">Nayarit</option>
+      <option value="NL">Nuevo León</option>
+      <option value="OC">Oaxaca</option>
+      <option value="PL">Puebla</option>
+      <option value="QT">Querétaro</option>
+      <option value="QR">Quintana Roo</option>
+      <option value="SP">San Luis Potosí</option>
+      <option value="SL">Sinaloa</option>
+      <option value="SR">Sonora</option>
+      <option value="TC">Tabasco</option>
+      <option value="TS">Tamaulipas</option>
+      <option value="TL">Tlaxcala</option>
+      <option value="VZ">Veracruz</option>
+      <option value="YN">Yucatán</option>
+      <option value="ZS">Zacatecas</option>
+      <option value="NE">Nacido en el extranjero</option>
+    </select>
+    <button type="button" onclick="calcularCURP()">Calcular CURP</button>
+  </form>
+  <div id="resultado" class="resultado"></div>
+</div>
+
+<script src="js/CalcularCurp.js"></script>
+
+</section>

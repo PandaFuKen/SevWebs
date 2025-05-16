@@ -1,0 +1,146 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+:root{
+  --Color1: #6a1d33; /* Color primario */
+  --Color2: #c18589; /* Color secundario */
+  --text-color: #f2f2f2; /* Color del texto */
+  --hover-color: #777; /* Color al pasar el mouse */
+}
+  
+.navbar {
+  overflow: hidden;
+  background-color:var(--Color1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0; /* Agregamos espacio vertical */
+}
+
+.navbar a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 12px 15px;
+  margin: 0 10px; /* Agregamos margen horizontal */
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.navbar a:hover {
+  background: #c18589;
+  color: black;
+}
+
+.titulo_navbar{
+  float: left;
+  color: #f2f2f2;
+  font-size: 24px;
+  margin-left: 20px; /* Espacio entre el título y el borde izquierdo */
+}
+
+.container_body{
+   padding-top: 80px; /* Espacio para la navbar fija */  
+}
+
+.container_body h1{
+  text-align: center;
+  color: var(--Color1);;
+  font-size: 36px;
+  margin-bottom: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+/* Style tab links */
+.tablinks-container{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top:10px;
+}
+.tablink {
+  background-color: var(--Color1);;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 100px 20px;
+  height: 100%;
+  width: 70%;
+  margin: 0 auto;
+}
+
+#Curp {background-color: red;}
+#Rfc {background-color: green;}
+/* Estilos para el contenedor del CURP */
+.curp-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.curp-container h1 {
+  margin-bottom: 20px;
+  color: var(--Color1);;
+}
+
+.curp-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.curp-container input, .curp-container select, .curp-container button {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.curp-container button {
+  background-color: var(--Color1);
+  color: white;
+  cursor: pointer;
+}
+
+.curp-container button:hover {
+  background-color: #c18589;
+}
+
+.resultado {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #333;
+}
