@@ -12,6 +12,7 @@ body, html {
 :root{
   --Color1: #6a1d33; /* Color primario */
   --Color2: #c18589; /* Color secundario */
+  --Color: #8f1b3c;
   --text-color: #f2f2f2; /* Color del texto */
   --hover-color: #777; /* Color al pasar el mouse */
 }
@@ -65,12 +66,12 @@ body, html {
 .tablinks-container{
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 200px;
   margin-top:10px;
 }
 .tablink {
   background-color: var(--Color1);;
-  color: white;
+  color: white; 
   float: left;
   border: none;
   outline: none;
@@ -81,7 +82,7 @@ body, html {
 }
 
 .tablink:hover {
-  background-color: #777;
+  background-color: var(--Color2);
 }
 
 /* Style the tab content (and add height:100% for full page content) */
@@ -91,15 +92,20 @@ body, html {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: white;
-  padding: 100px 20px;
+  color: var(--Color1);
+  padding: 100px 10px;
   height: 100%;
   width: 70%;
   margin: 0 auto;
 }
 
-#Curp {background-color: red;}
-#Rfc {background-color: green;}
+.tabcontent .title-back{
+  margin-top: -50px;
+  margin-left: 90px;
+}
+
+#Curp {background-color:   #fff}
+#Rfc {background-color:  #fff}
 /* Estilos para el contenedor del CURP */
 .curp-container {
   max-width: 500px;
@@ -112,7 +118,7 @@ body, html {
 }
 
 .curp-container h1 {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   color: var(--Color1);;
 }
 
@@ -143,4 +149,56 @@ body, html {
   margin-top: 20px;
   font-size: 18px;
   color: #333;
+}
+/*Informacion necesaria */
+.accordion {
+  background-color: var(--Color1); /* Color secundario */
+  color: var(--text-color);        /* Color del texto */
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  font-size: 20px;
+}
+
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: var(--Color2); /* Color al pasar el mouse */
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.active, .accordion:hover {
+  background-color: var(--Color); /* Color primario al hacer hover o activo */
+  color: #fff;                     /* Texto blanco para contraste */
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  background-color: #fff;          /* Fondo blanco para el panel */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+
+.panel .inside-text{
+  color: var(--Color1); /* Color primario */
+  font-size: 26px;
+  padding: 10px;
+}
+
+.panel .middle-text{
+  color: var(--Color1); /* Color primario */
+  font-size: 20px;
+  padding: 10px;
 }

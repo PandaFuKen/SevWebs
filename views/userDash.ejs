@@ -1,13 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
+  <title>Sidebar con íconos y texto</title>
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Usuario</title>
 </head>
 <body>
-  <h1>Bienvenido, Usuario <%= user.nombre %></h1>
-  <p>Este es el panel de control para usuarios.</p>
-  <a href="/logout">Cerrar Sesión</a>
+
+<!-- Botón de toggle -->
+<div class="toggle-btn" id="toggleBtn">
+  <i class="fas fa-bars"></i>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar collapsed" id="sidebar">
+  <div class="logo">Zaleta</div>
+  <ul class="nav">
+    <li><a href="#"><i class="fas fa-home"></i><span class="text">Inicio</span></a></li>
+    <li><a href="#"><i class="fas fa-user"></i><span class="text">Usuario</span></a></li>
+    <li><a href="#"><i class="fas fa-file-alt"></i><span class="text">Documentos</span></a></li>
+    <li><a href="#"><i class="fas fa-scroll"></i><span class="text">Certificados</span></a></li>
+    <li><a href="#"><i class="fas fa-graduation-cap"></i><span class="text">Cursos</span></a></li>
+    <li><a href="/logout"><i class="fas fa-sign-out-alt"></i><span class="text">Salir</span></a></li>
+  </ul>
+</div>
+
+<!-- Contenido principal -->
+<div class="main" id="main">
+  <h1>Dashboard</h1>
+  <p>Haz clic en el botón para expandir o colapsar la barra lateral.</p>
+</div>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const main = document.getElementById('main');
+  const toggleBtn = document.getElementById('toggleBtn');
+
+  toggleBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('collapsed');
+    main.classList.toggle('expanded');
+  });
+</script>
+
 </body>
 </html>

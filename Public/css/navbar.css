@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f0f0;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background:  #6a1d33;
+  color: #fff;
+  padding-top: 20px;
+  transition: width 0.3s;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar .logo {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 30px;
+  transition: opacity 0.3s;
+}
+
+.sidebar.collapsed .logo {
+  opacity: 0;
+}
+
+.sidebar .nav {
+  list-style: none;
+}
+
+.sidebar .nav li {
+  margin-bottom: 10px;
+}
+
+.sidebar .nav a {
+  display: flex;
+  align-items: center;
+  color: #ccc;
+  text-decoration: none;
+  padding: 12px 20px;
+  transition: background 0.3s;
+}
+
+.sidebar .nav a:hover {
+  background: #c18589;
+  color: white;
+}
+
+.sidebar .nav i {
+  width: 20px;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.sidebar .nav .text {
+  margin-left: 15px;
+  transition: opacity 0.3s;
+}
+
+.sidebar.collapsed .text {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Toggle button */
+.toggle-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #6a1d33;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1100;
+  border-radius: 5px;
+}
+
+/* Main content */
+.main {
+  margin-left: 220px;
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+.main.expanded {
+  margin-left: 60px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    left: -220px;
+  }
+
+  .sidebar.collapsed {
+    left: 0;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .main.expanded {
+    margin-left: 60px;
+  }
+}
