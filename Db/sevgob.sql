@@ -44,43 +44,21 @@ CREATE TABLE usuarios (
     FOREIGN KEY (id_estado_cuenta) REFERENCES estados_cuenta(id_estado_cuenta)
 );
 
-CREATE TABLE tipos_documentos (
-    id_tipo SERIAL PRIMARY KEY,
-    categoria VARCHAR(50) NOT NULL CHECK (categoria IN ('PERSONAL', 'ESCOLAR', 'CURSO', 'LABORAL')),
-    nombre VARCHAR(100) NOT NULL UNIQUE,
-    es_multiple BOOLEAN DEFAULT FALSE,
-    es_obligatorio BOOLEAN DEFAULT FALSE
-);
+
 
 CREATE TABLE documentos (
     id_documento SERIAL PRIMARY KEY,
     id_usuario INT NOT NULL,
-    id_tipo INT NOT NULL,
-    identificador VARCHAR(50),
-    nombre_archivo VARCHAR(255) NOT NULL,
-    ruta VARCHAR(500) NOT NULL,
-    tamano_kb INT NOT NULL,
-    fecha_subida TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_tipo) REFERENCES tipos_documentos(id_tipo)
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    fecha DATE NOT NULL,
+    direccion VARCHAR(255) NOT NULL, -- Ruta o URL del documento
+    categoria VARCHAR(20) NOT NULL CHECK (categoria IN ('PERSONAL', 'CERTIFICADO', 'CURSO')),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
 );
 
-CREATE TABLE cursos (
-    id_curso SERIAL PRIMARY KEY,
-    nombre VARCHAR(200) NOT NULL,
-    institucion VARCHAR(200),
-    duracion_horas INT,
-    validez_oficial BOOLEAN DEFAULT FALSE
-);
 
-CREATE TABLE certificados (
-    id_certificado SERIAL PRIMARY KEY,
-    id_usuario INT NOT NULL,
-    id_curso INT,
-    nombre_curso_personalizado VARCHAR(200),
-    id_documento INT UNIQUE,
-    fecha_completado DATE,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_curso) REFERENCES cursos(id_curso),
-    FOREIGN KEY (id_documento) REFERENCES documentos(id_documento) ON DELETE SET NULL
-);
+
+
+
+
