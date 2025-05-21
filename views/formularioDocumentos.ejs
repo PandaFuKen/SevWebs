@@ -1,0 +1,22 @@
+<form class="form-documento" action="/documento" method="POST" enctype="multipart/form-data">
+  <label for="nombre">Nombre del documento:</label>
+  <input type="text" id="nombre" name="nombre" maxlength="100" required><br><br>
+
+  <label for="descripcion">Descripción:</label>
+  <textarea id="descripcion" name="descripcion"></textarea><br><br>
+
+  <label for="fecha">Fecha:</label>
+  <input type="date" id="fecha" name="fecha" required><br><br>
+
+  <label for="categoria">Categoría:</label>
+  <select id="categoria" name="categoria" required>
+    <option value="PERSONAL">Personal</option>
+    <option value="CERTIFICADO">Certificado</option>
+    <option value="CURSO">Curso</option>
+  </select><br><br>
+
+  <label for="documento">Seleccionar archivo:</label>
+  <input type="file" id="documento" name="documento" required><br><br>
+
+  <button type="submit">Registrar Documento</button>
+</form>

@@ -24,6 +24,8 @@ router.get('/login', loginuser);
 // Ruta para procesar el inicio de sesión
 router.post('/login', loginUser);
 
+
+
 //DashBorad Admin
 router.get('/adminDash', isAuthenticated, (req, res) => {
   if (req.session.user.rol !== 1) {

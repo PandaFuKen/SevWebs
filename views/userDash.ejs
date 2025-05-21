@@ -8,29 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
-<!-- Botón de toggle -->
-<div class="toggle-btn" id="toggleBtn">
-  <i class="fas fa-bars"></i>
-</div>
-
-<!-- Sidebar -->
-<div class="sidebar collapsed" id="sidebar">
-  <div class="logo">Zaleta</div>
-  <ul class="nav">
-    <li><a href="#"><i class="fas fa-home"></i><span class="text">Inicio</span></a></li>
-    <li><a href="#"><i class="fas fa-user"></i><span class="text">Usuario</span></a></li>
-    <li><a href="#"><i class="fas fa-file-alt"></i><span class="text">Documentos</span></a></li>
-    <li><a href="#"><i class="fas fa-scroll"></i><span class="text">Certificados</span></a></li>
-    <li><a href="#"><i class="fas fa-graduation-cap"></i><span class="text">Cursos</span></a></li>
-    <li><a href="/logout"><i class="fas fa-sign-out-alt"></i><span class="text">Salir</span></a></li>
-  </ul>
-</div>
-
+  
+<%- include('sidebar.ejs') %>
 <!-- Contenido principal -->
-<div class="main" id="main">
-  <h1>Dashboard</h1>
+<div class="container-user" id="container-user">
+  <h1>Bienvenido <%= user.nombre %></h1>
   <p>Haz clic en el botón para expandir o colapsar la barra lateral.</p>
+<%- include('formularioDocumentos.ejs') %>
+  
+  
 </div>
 
 <script>

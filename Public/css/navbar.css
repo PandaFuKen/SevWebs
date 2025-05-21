@@ -89,15 +89,15 @@ body {
   border-radius: 5px;
 }
 
-/* Main content */
-.main {
-  margin-left: 220px;
+/* container-user content */
+.container-user {
+  margin-left: 60px; /* Cuando la barra está colapsada, menos espacio */
   padding: 20px;
   transition: margin-left 0.3s;
 }
 
-.main.expanded {
-  margin-left: 60px;
+.container-user.expanded {
+  margin-left: 220px; /* Cuando la barra está expandida, más espacio */
 }
 
 /* Responsive */
@@ -110,11 +110,66 @@ body {
     left: 0;
   }
 
-  .main {
+  .container-user {
     margin-left: 0;
   }
 
-  .main.expanded {
-    margin-left: 60px;
+  .container-user.expanded {
+    margin-left: 220px; /* Ahora se mueve más a la derecha en expandido */
   }
+}
+
+/* Estilos para el formulario de documentos */
+.form-documento {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 24px 32px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.form-documento label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #6a1d33;
+}
+
+.form-documento input,
+.form-documento textarea,
+.form-documento select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  background: #f9f9f9;
+  transition: border 0.2s;
+}
+
+.form-documento input:focus,
+.form-documento textarea:focus,
+.form-documento select:focus {
+  border: 1.5px solid #6a1d33;
+  outline: none;
+}
+
+.form-documento button {
+  width: 100%;
+  padding: 10px;
+  background: #6a1d33;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form-documento button:hover {
+  background: #a13c5a;
 }

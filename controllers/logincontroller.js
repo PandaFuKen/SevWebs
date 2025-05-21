@@ -18,7 +18,7 @@ export const loginUser = async (req, res) => {
     }
 
     req.session.user = {
-      id: user.id,
+      id_usuario: user.id_usuario,
       nombre: user.nombre,
       rol: user.id_rol,
     };

@@ -25,7 +25,7 @@ CREATE TABLE estados_cuenta (
 );
 
 CREATE TABLE usuarios (
-    id SERIAL PRIMARY KEY,
+    id_usuario SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     apellido_paterno VARCHAR(100) NOT NULL,
     apellido_materno VARCHAR(100) NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE usuarios (
     sexo VARCHAR(20) NOT NULL CHECK (sexo IN ('Masculino', 'Femenino', 'Otro')),
     telefono VARCHAR(15) NOT NULL,
     correo VARCHAR(100) NOT NULL UNIQUE,
-    contraseña VARCHAR(255) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
     id_rol INT NOT NULL DEFAULT 2,
     id_estado_cuenta INT NOT NULL DEFAULT 1,
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -54,11 +54,14 @@ CREATE TABLE documentos (
     fecha DATE NOT NULL,
     direccion VARCHAR(255) NOT NULL, -- Ruta o URL del documento
     categoria VARCHAR(20) NOT NULL CHECK (categoria IN ('PERSONAL', 'CERTIFICADO', 'CURSO')),
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
 );
 
 
+/*Borrar datos de las tablas*/
+ DELETE FROM usuarios WHERE id > 0;
 
-
+/*Para reinciar las tablas desde valor 0*/
+ALTER SEQUENCE usuarios_id_seq RESTART WITH 1;
 
 

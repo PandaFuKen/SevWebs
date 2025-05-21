@@ -3,6 +3,9 @@ import dotenv from 'dotenv';
 import bycrpt from 'bcrypt';
 import indexRoutes from './routes/index.js';
 import session from 'express-session';
+import documentoRouter from './controllers/añadirdocumento.js';
+import fs from 'fs';
+import path from 'path';
 
 dotenv.config();
 const app = express();
@@ -27,10 +30,19 @@ app.use(express.static('public'));
 // Rutas
 app.use('/', indexRoutes);
 
+//Controlador de documentos
+app.use(documentoRouter);
+
 // Middleware para manejar errores 404
 app.use((req, res, next) => {
   res.status(404).render('404', { title: 'Página no encontrada' });
 });
+
+// Configuración del directorio temporal
+const tmpDir = path.join(process.cwd(), 'uploads', 'tmp');
+if (!fs.existsSync(tmpDir)) {
+  fs.mkdirSync(tmpDir, { recursive: true });
+}
 
 // Puerto
 const PORT = process.env.PORT || 3000;
