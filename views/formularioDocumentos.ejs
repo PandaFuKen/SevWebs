@@ -20,3 +20,26 @@
 
   <button type="submit">Registrar Documento</button>
 </form>
+
+<script>
+document.querySelector('.form-documento').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const formData = new FormData(this);
+  try {
+    const res = await fetch('/documento', {
+      method: 'POST',
+      body: formData
+    });
+    const data = await res.json();
+    if (data.success) {
+      alert(data.message); // Muestra el mensaje del backend
+      this.reset();        // Limpia el formulario
+    } else {
+      alert('Error: ' + (data.message || 'No se pudo guardar el documento'));
+    }
+  } catch (err) {
+    alert('Error de conexión con el servidor');
+  }
+});
+</script>
+
