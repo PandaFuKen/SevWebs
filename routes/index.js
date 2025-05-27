@@ -6,6 +6,8 @@ import { storeUser } from '../controllers/añadirusercontroller.js';
 import { loginuser } from '../controllers/loginuser.js';
 import { loginUser } from '../controllers/logincontroller.js';
 import { isAuthenticated } from '../middlewares/authMiddlewares.js';
+import { verPersonales, verCertificados, verCursos } from '../controllers/documentosController.js';
+
 
 const router = express.Router();
 
@@ -24,7 +26,9 @@ router.get('/login', loginuser);
 // Ruta para procesar el inicio de sesión
 router.post('/login', loginUser);
 
-
+router.get('/personales', isAuthenticated, verPersonales);
+router.get('/certificados', isAuthenticated, verCertificados);
+router.get('/cursos', isAuthenticated, verCursos);
 
 //DashBorad Admin
 router.get('/adminDash', isAuthenticated, (req, res) => {

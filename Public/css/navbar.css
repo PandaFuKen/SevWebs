@@ -96,26 +96,26 @@ body {
   transition: margin-left 0.3s;
 }
 
+.sidebar:not(.collapsed) ~ .container-user,
 .container-user.expanded {
   margin-left: 220px; /* Cuando la barra está expandida, más espacio */
 }
 
-/* Responsive */
+/* Responsive: respeta el espacio del sidebar */
 @media (max-width: 768px) {
   .sidebar {
     left: -220px;
+    transition: left 0.3s;
   }
 
   .sidebar.collapsed {
     left: 0;
   }
 
-  .container-user {
-    margin-left: 0;
-  }
-
+  .container-user,
   .container-user.expanded {
-    margin-left: 220px; /* Ahora se mueve más a la derecha en expandido */
+    margin-left: 0 !important;
+    transition: margin-left 0.3s;
   }
 }
 
@@ -172,4 +172,171 @@ body {
 
 .form-documento button:hover {
   background: #a13c5a;
+}
+/* Cards */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.card {
+  width: 240px;
+  min-height: 260px;
+  max-height: 260px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  padding: 18px 16px 16px 16px;
+  box-shadow: 0 2px 10px rgba(106,29,51,0.10), 0 1.5px 6px rgba(0,0,0,0.07);
+  margin-bottom: 16px;
+  background: #fff;
+  border: 2px solid transparent;
+  transition: 
+    box-shadow 0.35s cubic-bezier(.4,2,.6,1),
+    border-color 0.35s cubic-bezier(.4,2,.6,1),
+    transform 0.35s cubic-bezier(.4,2,.6,1);
+  position: relative;
+  overflow: hidden;
+  will-change: transform, box-shadow, border-color;
+}
+
+.card:hover {
+  transform: perspective(600px) rotateY(6deg) scale(1.03);
+  box-shadow: 0 8px 32px rgba(106,29,51,0.18), 0 4px 16px rgba(0,0,0,0.10);
+  border-color: #a13c5a;
+}
+
+.card-title {
+  font-size: 1.18rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #6a1d33;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.card:hover .card-title {
+  color: #a13c5a;
+}
+
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 14px;
+  color: #444;
+  min-height: 60px;
+  max-height: 60px;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: #c18589 #f7e3ea;
+}
+
+.card-text::-webkit-scrollbar {
+  width: 6px;
+  background: #f7e3ea;
+}
+.card-text::-webkit-scrollbar-thumb {
+  background: #c18589;
+  border-radius: 4px;
+}
+
+/* Botones */
+.card-btns {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.card-btns a {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+}
+
+/* Haz el botón de descargar más ancho */
+.card-btn.download {
+  background: #388e3c;
+  color: #fff;
+  min-width: 110px; /* antes era 0, ahora más ancho */
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.card-btn.view {
+  background: #1976d2;
+  color: #fff;
+  min-width: 90px;
+}
+
+
+
+.card-btn {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 0;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: #eee;
+  color: #6a1d33;
+  box-shadow: 0 1px 3px rgba(106,29,51,0.07);
+  transition: 
+    background 0.18s, 
+    color 0.18s, 
+    box-shadow 0.18s, 
+    transform 0.18s;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-btn.view { background: #1976d2; color: #fff; }
+.card-btn.download { background: #388e3c; color: #fff; }
+
+.card-btn:hover, .card-btn:focus {
+  background: #fff;
+  color: #6a1d33;
+  box-shadow: 0 2px 8px rgba(106,29,51,0.13);
+  transform: scale(1.05);
+}
+
+.card-btn.view:hover, .card-btn.view:focus {
+  background: #fff;
+  color: #1976d2;
+  border: 1.5px solid #1976d2;
+}
+.card-btn.download:hover, .card-btn.download:focus {
+  background: #fff;
+  color: #388e3c;
+  border: 1.5px solid #388e3c;
+}
+
+/* Ripple effect */
+.card-btn:active::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 0; height: 0;
+  background: rgba(106,29,51,0.08);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: ripple 0.4s linear;
+}
+@keyframes ripple {
+  to {
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+  }
 }

@@ -67,4 +67,23 @@ async function actualizarRutaDocumento(idDocumento, direccion) {
   await pool.query(query, [direccion, idDocumento]);
 }
 
+router.get('/documento/ver/:id', async (req, res) => {
+  const { id } = req.params;
+  const result = await pool.query('SELECT direccion FROM documentos WHERE id_documento = $1', [id]);
+  if (result.rows.length === 0) return res.status(404).send('Documento no encontrado');
+  const filePath = path.join(process.cwd(), result.rows[0].direccion);
+  if (!fs.existsSync(filePath)) return res.status(404).send('Archivo no encontrado');
+  res.sendFile(filePath);
+});
+
+// Descargar documento
+router.get('/documento/descargar/:id', async (req, res) => {
+  const { id } = req.params;
+  const result = await pool.query('SELECT direccion, nombre FROM documentos WHERE id_documento = $1', [id]);
+  if (result.rows.length === 0) return res.status(404).send('Documento no encontrado');
+  const filePath = path.join(process.cwd(), result.rows[0].direccion);
+  if (!fs.existsSync(filePath)) return res.status(404).send('Archivo no encontrado');
+  res.download(filePath, result.rows[0].nombre + path.extname(filePath));
+});
+
 export default router;
