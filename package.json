@@ -1,7 +1,7 @@
 {
   "name": "sevgob",
   "version": "1.0.0",
-  "description": "��#\u0000 \u0000S\u0000e\u0000v\u0000W\u0000e\u0000b\u0000s\u0000\r\u0000 \u0000",
+  "description": "A web application for managing and sharing recipes.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
