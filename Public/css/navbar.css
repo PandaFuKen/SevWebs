@@ -1,0 +1,342 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f0f0;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background:  #6a1d33;
+  color: #fff;
+  padding-top: 20px;
+  transition: width 0.3s;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar .logo {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 30px;
+  transition: opacity 0.3s;
+}
+
+.sidebar.collapsed .logo {
+  opacity: 0;
+}
+
+.sidebar .nav {
+  list-style: none;
+}
+
+.sidebar .nav li {
+  margin-bottom: 10px;
+}
+
+.sidebar .nav a {
+  display: flex;
+  align-items: center;
+  color: #ccc;
+  text-decoration: none;
+  padding: 12px 20px;
+  transition: background 0.3s;
+}
+
+.sidebar .nav a:hover {
+  background: #c18589;
+  color: white;
+}
+
+.sidebar .nav i {
+  width: 20px;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.sidebar .nav .text {
+  margin-left: 15px;
+  transition: opacity 0.3s;
+}
+
+.sidebar.collapsed .text {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Toggle button */
+.toggle-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #6a1d33;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1100;
+  border-radius: 5px;
+}
+
+/* container-user content */
+.container-user {
+  margin-left: 60px; /* Cuando la barra está colapsada, menos espacio */
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+.sidebar:not(.collapsed) ~ .container-user,
+.container-user.expanded {
+  margin-left: 220px; /* Cuando la barra está expandida, más espacio */
+}
+
+/* Responsive: respeta el espacio del sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    left: -220px;
+    transition: left 0.3s;
+  }
+
+  .sidebar.collapsed {
+    left: 0;
+  }
+
+  .container-user,
+  .container-user.expanded {
+    margin-left: 0 !important;
+    transition: margin-left 0.3s;
+  }
+}
+
+/* Estilos para el formulario de documentos */
+.form-documento {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 24px 32px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.form-documento label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #6a1d33;
+}
+
+.form-documento input,
+.form-documento textarea,
+.form-documento select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  background: #f9f9f9;
+  transition: border 0.2s;
+}
+
+.form-documento input:focus,
+.form-documento textarea:focus,
+.form-documento select:focus {
+  border: 1.5px solid #6a1d33;
+  outline: none;
+}
+
+.form-documento button {
+  width: 100%;
+  padding: 10px;
+  background: #6a1d33;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form-documento button:hover {
+  background: #a13c5a;
+}
+/* Cards */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.card {
+  width: 240px;
+  min-height: 260px;
+  max-height: 260px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  padding: 18px 16px 16px 16px;
+  box-shadow: 0 2px 10px rgba(106,29,51,0.10), 0 1.5px 6px rgba(0,0,0,0.07);
+  margin-bottom: 16px;
+  background: #fff;
+  border: 2px solid transparent;
+  transition: 
+    box-shadow 0.35s cubic-bezier(.4,2,.6,1),
+    border-color 0.35s cubic-bezier(.4,2,.6,1),
+    transform 0.35s cubic-bezier(.4,2,.6,1);
+  position: relative;
+  overflow: hidden;
+  will-change: transform, box-shadow, border-color;
+}
+
+.card:hover {
+  transform: perspective(600px) rotateY(6deg) scale(1.03);
+  box-shadow: 0 8px 32px rgba(106,29,51,0.18), 0 4px 16px rgba(0,0,0,0.10);
+  border-color: #a13c5a;
+}
+
+.card-title {
+  font-size: 1.18rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #6a1d33;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.card:hover .card-title {
+  color: #a13c5a;
+}
+
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 14px;
+  color: #444;
+  min-height: 60px;
+  max-height: 60px;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: #c18589 #f7e3ea;
+}
+
+.card-text::-webkit-scrollbar {
+  width: 6px;
+  background: #f7e3ea;
+}
+.card-text::-webkit-scrollbar-thumb {
+  background: #c18589;
+  border-radius: 4px;
+}
+
+/* Botones */
+.card-btns {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.card-btns a {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+}
+
+/* Haz el botón de descargar más ancho */
+.card-btn.download {
+  background: #388e3c;
+  color: #fff;
+  min-width: 110px; /* antes era 0, ahora más ancho */
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.card-btn.view {
+  background: #1976d2;
+  color: #fff;
+  min-width: 90px;
+}
+
+
+
+.card-btn {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 0;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: #eee;
+  color: #6a1d33;
+  box-shadow: 0 1px 3px rgba(106,29,51,0.07);
+  transition: 
+    background 0.18s, 
+    color 0.18s, 
+    box-shadow 0.18s, 
+    transform 0.18s;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-btn.view { background: #1976d2; color: #fff; }
+.card-btn.download { background: #388e3c; color: #fff; }
+
+.card-btn:hover, .card-btn:focus {
+  background: #fff;
+  color: #6a1d33;
+  box-shadow: 0 2px 8px rgba(106,29,51,0.13);
+  transform: scale(1.05);
+}
+
+.card-btn.view:hover, .card-btn.view:focus {
+  background: #fff;
+  color: #1976d2;
+  border: 1.5px solid #1976d2;
+}
+.card-btn.download:hover, .card-btn.download:focus {
+  background: #fff;
+  color: #388e3c;
+  border: 1.5px solid #388e3c;
+}
+
+/* Ripple effect */
+.card-btn:active::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 0; height: 0;
+  background: rgba(106,29,51,0.08);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: ripple 0.4s linear;
+}
+@keyframes ripple {
+  to {
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+  }
+}

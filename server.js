@@ -1,25 +1,51 @@
-const express = require('express');
+import express from 'express';
+import dotenv from 'dotenv';
+import bycrpt from 'bcrypt';
+import indexRoutes from './routes/index.js';
+import session from 'express-session';
+import documentoRouter from './controllers/añadirdocumento.js';
+import fs from 'fs';
+import path from 'path';
+
+dotenv.config();
 const app = express();
-const path = require('path');
-const pagesRouter = require('./src/routes/pages'); // Importa las rutas
 
-// Configurar EJS como motor de vistas
+// Middleware para procesar datos del formulario
+app.use(express.urlencoded({ extended: true }));
+
+// Middleware para sesiones
+app.use(session({
+  secret: 'Panda020406', // Cambia esto por una clave secreta más segura
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false } // Cambia a `true` si usas HTTPS
+}));
+
+// EJS como motor de plantillas
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'src', 'views'));
 
-// Middleware para archivos estáticos (CSS, imágenes, etc.)
-app.use(express.static(path.join(__dirname, 'public')));
+// Carpeta de archivos públicos
+app.use(express.static('public'));
 
-// Usar el router para manejar las páginas
-app.use('/', pagesRouter);
+// Rutas
+app.use('/', indexRoutes);
+
+//Controlador de documentos
+app.use(documentoRouter);
 
 // Middleware para manejar errores 404
 app.use((req, res, next) => {
-    res.status(404).render('404', { titulo: 'Página no encontrada' });
+  res.status(404).render('404', { title: 'Página no encontrada' });
 });
 
-// Iniciar servidor
+// Configuración del directorio temporal
+const tmpDir = path.join(process.cwd(), 'uploads', 'tmp');
+if (!fs.existsSync(tmpDir)) {
+  fs.mkdirSync(tmpDir, { recursive: true });
+}
+
+// Puerto
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor en http://localhost:${PORT}`);
 });
